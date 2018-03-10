@@ -56,11 +56,14 @@ $(function() {
       // for to display rating
       gifDiv.append(ratingP);
 
+      // retrieve url for gifs
+      var gifURL = response.gif;
+
       // element for holding of gif images
-      var image = $("<img>").attr("src", gif);
+      var image = $("<img>").attr("src", gifURL);
 
       //for to display images
-      gifDiv.append(image)
+      gifDiv.append(image);
 
 
     });
@@ -70,13 +73,13 @@ $(function() {
   // function to add #input-field submissions to topics array
   $("#add-topic").on("click", function(event) {
     event.preventDefault();
-    // This line grabs the input from the textbox
+    // store user input and trim
     var addTopic = uInput.val().trim();
 
-    // Adding movie from the textbox to our array
+    // add user input to array
     topics.push(addTopic);
 
-    // Calling renderButtons which handles the processing of our movie array
+    // call generateButts to process array
     generateButts();
   });
 
