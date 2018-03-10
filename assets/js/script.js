@@ -62,7 +62,6 @@ $(function() {
       //for to display images
       gifDiv.append(image)
 
-      // when topic button clicked, generate 10 static gifs using Giphy API and add to page
 
     });
   };
@@ -72,7 +71,7 @@ $(function() {
   $("#add-topic").on("click", function(event) {
     event.preventDefault();
     // This line grabs the input from the textbox
-    var addTopic = $("#input-field").val().trim();
+    var addTopic = uInput.val().trim();
 
     // Adding movie from the textbox to our array
     topics.push(addTopic);
@@ -81,5 +80,8 @@ $(function() {
     generateButts();
   });
 
-generateButts();
+  // click event listener for topic buttons
+  $(document).on("click", ".topic", gifAjacked);
+
+  generateButts();
 });
