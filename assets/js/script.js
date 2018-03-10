@@ -1,6 +1,7 @@
 $(function() {
 
   // creat variables for topics array and DOM elements intended for manipulation
+  // famous punk band front people for jumping off point
   var topics = ["danzig", "jello biafra", "henry rollins"];
   var topicDiv = $("#topic-butts");
   var uInput = $("#input-field");
@@ -61,6 +62,7 @@ $(function() {
 
         // retrieve url for gifs
         var gifURL = response.data[i].images.fixed_height_still.url;
+        var animaURL = response.data[i].images.fixed_height.url;
 
         // element for holding of gif images
         var image = $("<img>").attr("src", gifURL);
@@ -74,7 +76,7 @@ $(function() {
 
     });
   };
-  // when static gif is clicked, it should animate, if clicked again gif should revert to static
+
 
   // function to add #input-field submissions to topics array
   $("#add-topic").on("click", function(event) {
@@ -88,6 +90,9 @@ $(function() {
     // call generateButts to process array
     generateButts();
   });
+
+    // function to change static image to animated gif when image clicked
+    // animated gif should revert to still image when clicked again, etc.
 
   // click event listener for topic buttons
   $(document).on("click", ".topic", gifAjacked);
