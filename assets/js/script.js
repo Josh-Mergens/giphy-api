@@ -44,27 +44,33 @@ $(function() {
       method: "GET"
     }).then(function(response) {
 
-      // generate div for holding of gifs
-      var gifDiv = $("<div class='gifs'>");
+      for (var i = 0; i < response.data.length; i++) {
+        response.data[i]
 
-      // variable for holding of ratings
-      var rating = response.rating
+        // generate div for holding of gifs
+        var gifDiv = $("<div class='gifs'>");
 
-      // generate element for ratings display
-      var ratingP = $("<p>").text("Rating: " + rating);
+        // variable for holding of ratings
+        var ratings = response.data[i].rating;
 
-      // for to display rating
-      gifDiv.append(ratingP);
+        // generate element for ratings display
+        var ratingP = $("<p>").text("Rating: " + ratings.toUpperCase());
 
-      // retrieve url for gifs
-      var gifURL = response.gif;
+        // for to display rating
+        gifDiv.append(ratingP);
 
-      // element for holding of gif images
-      var image = $("<img>").attr("src", gifURL);
+        // retrieve url for gifs
+        var gifURL = response.data[i].images.fixed_height_still.url;
 
-      //for to display images
-      gifDiv.append(image);
+        // element for holding of gif images
+        var image = $("<img>").attr("src", gifURL);
 
+        //for to display images
+        gifDiv.append(image);
+
+        $("#gif-view").prepend(gifDiv);
+
+      };
 
     });
   };
